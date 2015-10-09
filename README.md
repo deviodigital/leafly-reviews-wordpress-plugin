@@ -1,9 +1,9 @@
-# leafly-reviews-wordpress-widget
+# Leafly Reviews WordPress Plugin
 Display your dispensaries reviews on your WordPress powered website
 
-Currently working on adding a cache option for the data.
+If you, or one of your clients run a dispensary and need to display their leafly reviews directly on their own website, this plugin will do the trick.
 
-Shortcode has been added as of 10-9-15.
+Currently working on adding a cache option for the data. Shortcode has been added as of 10-9-15.
 
 Give me some time and I'll also have more details on how to use the plugin added to the readme.
 
