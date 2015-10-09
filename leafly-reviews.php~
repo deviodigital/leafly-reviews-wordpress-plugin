@@ -80,7 +80,6 @@ if( ! class_exists( 'LeaflyReviews' ) ) {
         private function includes() {
             require_once LEAFLYREVIEWS_DIR . 'includes/functions.php';
             require_once LEAFLYREVIEWS_DIR . 'includes/scripts.php';
-            require_once LEAFLYREVIEWS_DIR . 'includes/shortcodes.php';
             require_once LEAFLYREVIEWS_DIR . 'includes/widget.php';
         }
 
