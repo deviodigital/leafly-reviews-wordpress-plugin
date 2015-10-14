@@ -6,10 +6,89 @@
  * @since       1.0.0
  */
 
-
 // Exit if accessed directly
 if( ! defined( 'ABSPATH' ) ) exit;
 
+/*
+ * SimpleCache v1.4.1
+ *
+ * By Gilbert Pellegrom
+ * http://dev7studios.com
+ *
+ * Free to use and abuse under the MIT license.
+ * http://www.opensource.org/licenses/mit-license.php
+ */
+class WidgetCache {
+	
+	// Path to cache folder (with trailing /)
+	public $cache_path = 'wp-content/plugins/leafly-reviews/cache/';
+	// Length of time to cache a file (in seconds)
+	public $cache_time = 3600;
+	// Cache file extension
+	public $cache_extension = '.cache';
+
+	// This is just a functionality wrapper function
+	public function get_data($widget, $url)
+	{
+		if($data = $this->get_cache($widget)){
+			return $data;
+		} else {
+			$data = $this->do_curl($url);
+			$this->set_cache($widget, $data);
+			return $data;
+		}
+	}
+
+	public function set_cache($widget, $data)
+	{
+		file_put_contents($this->cache_path . $this->safe_filename($widget) . $this->cache_extension, $data);
+	}
+
+	public function get_cache($widget)
+	{
+		if($this->is_cached($widget)){
+			$filename = $this->cache_path . $this->safe_filename($widget) . $this->cache_extension;
+			return file_get_contents($filename);
+		}
+
+		return false;
+	}
+
+	public function is_cached($widget)
+	{
+		$filename = $this->cache_path . $this->safe_filename($widget) . $this->cache_extension;
+
+		if(file_exists($filename) && (filemtime($filename) + $this->cache_time >= time())) return true;
+
+		return false;
+	}
+
+	//Helper function for retrieving data from url
+	public function do_curl($url)
+	{
+		if(function_exists("curl_init")){
+			$appid = get_option("app_id");
+			$appkey = get_option("app_key");
+
+			$ch = curl_init();
+			curl_setopt($ch, CURLOPT_URL, $url);
+			curl_setopt($ch, CURLOPT_HTTPHEADER,array('app_id: '. $appid .'','app_key: '. $appkey .''));
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+			curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+			$content = curl_exec($ch);
+			curl_close($ch);
+			return $content;
+		} else {
+			return file_get_contents($url);
+		}
+	}
+
+	//Helper function to validate filenames
+	private function safe_filename($filename)
+	{
+		return preg_replace('/[^0-9a-z\.\_\-]/i','', strtolower($filename));
+	}
+}
 
 /**
  * Leafly Reviews Widget
@@ -61,20 +140,23 @@ class leaflyreviews_widget extends WP_Widget {
         do_action( 'leafly_reviews_before_widget' );
 
         if( $instance['slug'] ) {
-			$data = wp_remote_get( 'http://data.leafly.com/locations/'.$instance["slug"].'/reviews?skip=0&take='.$instance["limit"].'',
-				array(
-					'headers' => array(
-						'app_id' => $instance["appid"],
-						'app_key' => $instance["appkey"]
-					)
-				)
-			);
-			
-            if( $data['response']['message'] == "Forbidden" ) {
-                echo $data['body'];
-            } else {
+				$cache = new WidgetCache();
+				$cache->cache_path = 'wp-content/plugins/leafly-reviews/cache/';
+				$cache->cache_time = 3600;
+
+				if($data = $cache->get_cache('widget')){
+					$body = json_decode($data,true);
+				} else {
+					$data = $cache->do_curl( 'http://data.leafly.com/locations/'. $instance['slug'] .'/reviews?skip=0&take=100' );
+					$cache->set_cache('widget', $data);
+					$body = json_decode($data,true);
+				}
+				
+				if ($data == "Authentication parameters missing") {
+					echo $data;
+				} else {
 				$i = 1;
-				$body = json_decode($data['body'],true);
+
 				foreach( $body['reviews'] as $review) {
 					echo "<div class='leafly-reviews-plugin-meta'>";
 					
@@ -152,8 +234,6 @@ class leaflyreviews_widget extends WP_Widget {
 
         $instance['title']      	= strip_tags( $new_instance['title'] );
         $instance['slug']   		= strip_tags( $new_instance['slug'] );
-        $instance['appid']   		= strip_tags( $new_instance['appid'] );
-        $instance['appkey']   		= strip_tags( $new_instance['appkey'] );
         $instance['limit']   		= strip_tags( $new_instance['limit'] );
         $instance['avatar']			= $new_instance['avatar'];
         $instance['stars']			= $new_instance['stars'];
@@ -179,8 +259,6 @@ class leaflyreviews_widget extends WP_Widget {
         $defaults = array(
             'title'     => 'Leafly Reviews',
             'slug'  	=> '',
-            'appid'		=> '',
-            'appkey'	=> '',
             'limit'  	=> '5',
             'avatar' 	=> '',
             'stars' 	=> '',
@@ -196,17 +274,7 @@ class leaflyreviews_widget extends WP_Widget {
             <label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php _e( 'Title:', 'leafly-reviews' ); ?></label>
             <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo $instance['title']; ?>" />
         </p>
-		
-        <p>
-            <label for="<?php echo esc_attr( $this->get_field_id( 'appid' ) ); ?>"><?php _e( 'APP ID:', 'leafly-reviews' ); ?></label>
-            <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'appid' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'appid' ) ); ?>" type="text" value="<?php echo $instance['appid']; ?>" />
-        </p>
-		
-        <p>
-            <label for="<?php echo esc_attr( $this->get_field_id( 'appkey' ) ); ?>"><?php _e( 'APP Key:', 'leafly-reviews' ); ?></label>
-            <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'appkey' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'appkey' ) ); ?>" type="text" value="<?php echo $instance['appkey']; ?>" />
-        </p>
-		
+
         <p>
             <label for="<?php echo esc_attr( $this->get_field_id( 'slug' ) ); ?>"><?php _e( 'Location slug (ex: denver-relief):', 'leafly-reviews' ); ?></label>
             <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'slug' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'slug' ) ); ?>" type="text" value="<?php echo $instance['slug']; ?>" />

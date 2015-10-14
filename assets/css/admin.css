@@ -14,7 +14,8 @@ div.widget[id*=_leaflyreviews_] .widget-top:hover {
 	border-color: #76BD1D;
 }
 
-div.widget[id*=_leaflyreviews_] .widget-title {
+div.widget[id*=_leaflyreviews_] .widget-title,
+div.widget[id*=_leaflyreviews_] .widget-title h3 {
 	background: #76BD1D;
 	color: #FFF;
 }
