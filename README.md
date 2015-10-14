@@ -46,7 +46,5 @@ If you'd like to remove some of these options from showing, you can add the opti
 
 ## Screenshots
 
-![Widget display](https://robertdevore.com/wp-content/uploads/2015/10/leafly-reviews-wordpress-plugin-display.jpg)
-
-![Backend widget options](https://robertdevore.com/wp-content/uploads/2015/10/leafly-reviews-wordpress-plugin-widget.jpg)
+![Widget display](https://robertdevore.com/wp-content/uploads/2015/10/leafly-reviews-wordpress-plugin-display.jpg) ![Backend widget options](https://robertdevore.com/wp-content/uploads/2015/10/leafly-reviews-wordpress-plugin-widget.jpg)
 
