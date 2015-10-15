@@ -1,13 +1,12 @@
 # Leafly Reviews WordPress Plugin
+
+![Leafly Reviews for WordPress](https://robertdevore.com/wp-content/uploads/2015/10/leafly-reviews-stamp.jpg)
+
 Easily display your dispensaries reviews on your WordPress powered website
 
-**Caching built in**
+I wrote up a more detailed release post if you're interested in finding out a bit more information than what's included in this README.
 
-Leafly gives their API users a limit of 25 hits per day for their **seed** account, or 60 hits per minute for their **bloom** account.
-
-To help your dispensary utilize this plugin without needing to upgrade to bloom, and taking too many hits to your account, I've built in a cache that refreshes once per hour.
-
-There's nothing that you need to do on your end in order to get this to work, it's baked right in to the plugin - pardon the pun :)
+[View the write up here](https://robertdevore.com/leafly-reviews-wordpress-plugin/)
 
 ### Adding your APP ID and KEY
 
@@ -20,6 +19,14 @@ Not sure where to get your APP ID and KEY?
 You get them from the [Leafly Developer](https://developer.leafly.com) area, which lets you sign up for an account and create an app.
 
 When you create the app, you'll be given a KEY and ID to use, which is what you'll need to copy over to this plugin's settings page.
+
+**Caching built in**
+
+Leafly gives their API users a limit of 25 hits per day for their **seed** account, or 60 hits per minute for their **bloom** account.
+
+To help your dispensary utilize this plugin without needing to upgrade to bloom, and taking too many hits to your account, I've built in a cache that refreshes once per hour.
+
+There's nothing that you need to do on your end in order to get this to work, it's baked right in to the plugin - pardon the pun :)
 
 ### Widget Options
 After you install the Leafly Reviews WordPress plugin, you'll be able to add a custom widget to your website's sidebar (or anywhere else that widgets are enabled in your theme).
