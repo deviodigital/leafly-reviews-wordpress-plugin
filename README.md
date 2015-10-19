@@ -8,6 +8,10 @@ I wrote up a more detailed release post if you're interested in finding out a bi
 
 [View the write up here](https://robertdevore.com/leafly-reviews-wordpress-plugin/)
 
+This plugin is also available from the official WordPress repository.
+
+You can download it through your dashboard, or by going to the [Leafly Reviews plugin page](https://wordpress.org/plugins/leafly-reviews)
+
 ### Adding your APP ID and KEY
 
 Once you install this plugin, you'll notice a new options page in your WordPress dashboard under the Settings section, titled "Leafly Reviews".
