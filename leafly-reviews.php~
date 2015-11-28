@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name:     Leafly Reviews
- * Plugin URI:      https://www.wpdispensary.com
+ * Plugin URI:      http://www.deviodigital.com
  * Description:     Easily display your leafly dispensary reviews on your own website
  * Version:         1.0.1
- * Author:          WP Dispensary
- * Author URI:      https://www.wpdispensary.com
+ * Author:          Devio Digital
+ * Author URI:      http://deviodigital.com
  * Text Domain:     leafly-reviews
  *
  * @package         LeaflyReviews

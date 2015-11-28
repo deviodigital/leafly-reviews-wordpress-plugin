@@ -208,12 +208,6 @@ class leaflyreviews_widget extends WP_Widget {
 					// Check review count
 					if ($i++ == $instance['limit']) break;
 				}
-
-				if('on' == $instance['viewall'] ) {
-					// Display if user would shop again if they say YES
-					echo "<span class='leafly-reviews-plugin-meta-item'><a class='leafly-reviews-plugin-viewall' href='https://www.leafly.com/dispensary-info/". $instance['slug'] ."/reviews' target='_blank'>View all reviews &rarr;</a></span>";
-				}
-
             }
         } else {
             _e( 'No location has been specified!', 'leafly-reviews' );
@@ -321,11 +315,6 @@ class leaflyreviews_widget extends WP_Widget {
 	    <p>
 			<input class="checkbox" type="checkbox" <?php checked($instance['comments'], 'on'); ?> id="<?php echo $this->get_field_id('comments'); ?>" name="<?php echo $this->get_field_name('comments'); ?>" /> 
 			<label for="<?php echo esc_attr( $this->get_field_id( 'comments' ) ); ?>"><?php _e( 'Display reviewer comments?', 'leafly-reviews' ); ?></label>
-        </p>
-
-	    <p>
-			<input class="checkbox" type="checkbox" <?php checked($instance['viewall'], 'on'); ?> id="<?php echo $this->get_field_id('viewall'); ?>" name="<?php echo $this->get_field_name('viewall'); ?>" /> 
-			<label for="<?php echo esc_attr( $this->get_field_id( 'viewall' ) ); ?>"><?php _e( 'Display link to all reviews on Leafly?', 'leafly-reviews' ); ?></label>
         </p>
 
 		<?php

@@ -40,16 +40,6 @@ If you'd like to remove some of these options from showing, you can add the opti
 3. Go to `Settings > Leafly Reviews` and add in your Leafly API ID and KEY (required in order for the plugin to work)
 4. Add the Leafly Reviews widget through the `Appearance > Widgets` area of your dashboard, or use the shortcode to display your reviews on any page or post
 
-== Changelog ==
-
-= 1.0.1 =
-* Added option to show a link to view all reviews in your Leafly profile
-
-== Upgrade Notice ==
-
-= 1.0.1 =
-Added option to show a link to view all reviews in your Leafly profile
-
 == Screenshots ==
 
 1. The widget options that you can use to customize the way your reviews display on your website
