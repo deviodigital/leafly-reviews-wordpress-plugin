@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name:     Leafly Reviews
- * Plugin URI:      https://www.wpdispensary.com
+ * Plugin URI:      http://www.wpdispensary.com
  * Description:     Easily display your leafly dispensary reviews on your own website
- * Version:         1.0.1
+ * Version:         1.0.2
  * Author:          WP Dispensary
- * Author URI:      https://www.wpdispensary.com
+ * Author URI:      http://www.wpdispensary.com
  * Text Domain:     leafly-reviews
  *
  * @package         LeaflyReviews
@@ -143,57 +143,65 @@ function lealyreviews_load() {
 }
 add_action( 'plugins_loaded', 'lealyreviews_load' );
 
-
 /**
- * Create the settings page for the LeaflyReviews plugin
+ * Create the Leafly Connect settings page
  *
  * @since       1.0.0
  */
 
 // create custom plugin settings menu
-add_action('admin_menu', 'lrwp_create_menu');
 
-function lrwp_create_menu() {
+if ( ! function_exists( 'lcwp_create_menu' ) ) {
 
-	//create new top-level menu
-	add_submenu_page( 'options-general.php', 'Leafly Reviews', 'Leafly Reviews', 'manage_options', 'leafly_reviews', 'lrwp_settings_page' );
+	add_action('admin_menu', 'lcwp_create_menu');
+	function lcwp_create_menu() {
+		//create new top-level menu
+		add_submenu_page( 'options-general.php', 'Leafly Connect', 'Leafly Connect', 'manage_options', 'leafly_connect', 'lcwp_settings_page' );
+		//call register settings function
+		add_action( 'admin_init', 'register_mysettings' );
+	}
 
-	//call register settings function
-	add_action( 'admin_init', 'register_mysettings' );
 }
 
+if ( ! function_exists( 'register_mysettings' ) ) {
 
-function register_mysettings() {
-	//register our settings
-	register_setting( 'lrwp-settings-group', 'app_id' );
-	register_setting( 'lrwp-settings-group', 'app_key' );
+	function register_mysettings() {
+		//register our settings
+		register_setting( 'lcwp-settings-group', 'app_id' );
+		register_setting( 'lcwp-settings-group', 'app_key' );
+	}
+
 }
 
-function lrwp_settings_page() {
-?>
-<div class="wrap">
-<h2>Leafly Reviews</h2>
-<p>In order to utilize this plugin, you need to create your API ID and KEY. Learn more about this <a href="http://developer.leafly.com/" target="_blank">here</a></p>
+if ( ! function_exists( 'lcwp_settings_page' ) ) {
 
-<form method="post" action="options.php">
-    <?php settings_fields( 'lrwp-settings-group' ); ?>
-    <table class="form-table">
-        <tr valign="top">
-        <th scope="row">APP ID:</th>
-        <td><input type="text" name="app_id" value="<?php echo get_option('app_id'); ?>" /></td>
-        </tr>
-         
-        <tr valign="top">
-        <th scope="row">APP KEY</th>
-        <td><input type="text" name="app_key" value="<?php echo get_option('app_key'); ?>" /></td>
-        </tr>
+	function lcwp_settings_page() {
+	?>
+	<div class="wrap">
+	<h2>Leafly Connect</h2>
+	<p>In order to utilize the Leafly plugins from <a href="http://www.wpdispensary.com/">WP Dispensary</a>, you need to create your API ID and KEY. Learn more about this <a href="http://developer.leafly.com/" target="_blank">here</a></p>
 
-    </table>
-    
-    <p class="submit">
-    <input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
-    </p>
+	<form method="post" action="options.php">
+		<?php settings_fields( 'lcwp-settings-group' ); ?>
+		<table class="form-table">
+			<tr valign="top">
+			<th scope="row">APP ID:</th>
+			<td><input type="text" name="app_id" value="<?php echo get_option('app_id'); ?>" /></td>
+			</tr>
+			 
+			<tr valign="top">
+			<th scope="row">APP KEY</th>
+			<td><input type="text" name="app_key" value="<?php echo get_option('app_key'); ?>" /></td>
+			</tr>
 
-</form>
-</div>
-<?php } ?>
+		</table>
+		
+		<p class="submit">
+		<input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
+		</p>
+
+	</form>
+	</div>
+	<?php }
+
+}

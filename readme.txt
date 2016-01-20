@@ -2,8 +2,8 @@
 Contributors: deviodigital
 Tags: leafly, reviews, widget, shortcode
 Requires at least: 3.0
-Tested up to: 4.4.0
-Stable tag: 1.0.1
+Tested up to: 4.4.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -31,16 +31,20 @@ You will need to add in your slug, just like the widget options. The shortcode w
 
 If you'd like to remove some of these options from showing, you can add the option to the shortcode with the value of <em>no</em>, like this:
 
-`[leaflyreviews slug="denver-relief" limit="5" avatar="no" stars="no" ratings="no" recommend="no" shopagain="no" comments="no"]`
+`[leaflyreviews slug="denver-relief" limit="5" avatar="no" stars="no" ratings="no" recommend="no" shopagain="no" comments="no" viewall="no"]`
 
 == Installation ==
 
 1. Upload the `leafly-reviews` folder to the `/wp-content/plugins/` directory or add it directly through your WordPress admin dashboard
 2. Activate the plugin through the `Plugins` menu in WordPress
-3. Go to `Settings > Leafly Reviews` and add in your Leafly API ID and KEY (required in order for the plugin to work)
+3. Go to `Settings > Leafly Connect` and add in your Leafly API ID and KEY (required in order for the plugin to work)
 4. Add the Leafly Reviews widget through the `Appearance > Widgets` area of your dashboard, or use the shortcode to display your reviews on any page or post
 
 == Changelog ==
+
+= 1.0.2 =
+* Fixed style output issues
+* Changed the "Leafly Reviews" settings page to "Leafly Connect", so other plugins can utilize the same API ID and KEY
 
 = 1.0.1 =
 * Added option to show a link to view all reviews in your Leafly profile

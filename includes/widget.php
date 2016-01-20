@@ -211,7 +211,7 @@ class leaflyreviews_widget extends WP_Widget {
 
 				if('on' == $instance['viewall'] ) {
 					// Display if user would shop again if they say YES
-					echo "<span class='leafly-reviews-plugin-meta-item'><a class='leafly-reviews-plugin-viewall' href='https://www.leafly.com/dispensary-info/". $instance['slug'] ."/reviews' target='_blank'>View all reviews &rarr;</a></span>";
+					echo "<p><span class='leafly-reviews-plugin-meta-item'><a class='leafly-reviews-plugin-viewall' href='https://www.leafly.com/dispensary-info/". $instance['slug'] ."/reviews' target='_blank'>View all reviews &rarr;</a></span></p>";
 				}
 
             }

@@ -1,16 +1,16 @@
 # Leafly Reviews WordPress Plugin
 
-![Leafly Reviews for WordPress](https://robertdevore.com/wp-content/uploads/2015/10/leafly-reviews-stamp.jpg)
+![Leafly Reviews for WordPress](http://robertdevore.com/wp-content/uploads/2015/10/leafly-reviews-stamp.jpg)
 
 Easily display your dispensaries reviews on your WordPress powered website
 
 I wrote up a more detailed release post if you're interested in finding out a bit more information than what's included in this README.
 
-[View the write up here](https://robertdevore.com/leafly-reviews-wordpress-plugin/)
+[View the write up here](http://robertdevore.com/leafly-reviews-wordpress-plugin/)
 
 This plugin is also available from the official WordPress repository.
 
-You can download it through your dashboard, or by going to the [Leafly Reviews plugin page](https://wordpress.org/plugins/leafly-reviews)
+You can download it through your dashboard, or by going to the [Leafly Reviews plugin page](http://wordpress.org/plugins/leafly-reviews)
 
 ### Adding your APP ID and KEY
 
@@ -53,9 +53,9 @@ You will need to add in your slug, just like the widget options. The shortcode w
 
 If you'd like to remove some of these options from showing, you can add the option to the shortcode with the value of *no*, like this:
 
-`[leaflyreviews slug="denver-relief" limit="5" avatar="no" stars="no" ratings="no" recommend="no" shopagain="no" comments="no"]`
+`[leaflyreviews slug="denver-relief" limit="5" avatar="no" stars="no" ratings="no" recommend="no" shopagain="no" comments="no" viewall="no"]`
 
 ## Screenshots
 
-![Widget display](https://robertdevore.com/wp-content/uploads/2015/10/leafly-reviews-wordpress-plugin-display.jpg) ![Backend widget options](https://robertdevore.com/wp-content/uploads/2015/10/leafly-reviews-wordpress-plugin-widget.jpg)
+![Widget display](http://robertdevore.com/wp-content/uploads/2015/10/leafly-reviews-wordpress-plugin-display.jpg) ![Backend widget options](http://robertdevore.com/wp-content/uploads/2015/10/leafly-reviews-wordpress-plugin-widget.jpg)
 

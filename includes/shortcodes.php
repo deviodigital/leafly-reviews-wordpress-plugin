@@ -186,8 +186,9 @@ function leafly_reviews_shortcode($atts){
 
 				if('yes' == $viewall ) {
 					// Display a link to Leafly profile
-					echo "<span class='leafly-reviews-plugin-meta-item'><a class='leafly-reviews-plugin-viewall' href='https://www.leafly.com/dispensary-info/". $slug ."/reviews' target='_blank'>View all reviews &rarr;</a>";
+					echo "<p><span class='leafly-reviews-plugin-meta-item'><a class='leafly-reviews-plugin-viewall' href='https://www.leafly.com/dispensary-info/". $slug ."/reviews' target='_blank'>View all reviews &rarr;</a></span></p>";
 				}
+
             }
         } else {
             _e( 'No location has been specified!', 'leafly-reviews' );
