@@ -49,7 +49,7 @@ Here is the basic shortcode:
 
 `[leaflyreviews slug="denver-relief"]`
 
-You will need to add in your slug, just like the widget options. The shortcode will default to showing 5 reviews, and all of the options given in the widget (avatar, star rating, detailed rating, recommendation, shop again and comments.
+You will need to add in your slug, just like the widget options. The shortcode will default to showing 5 reviews, and all of the options given in the widget (avatar, star rating, detailed rating, recommendation, shop again and comments).
 
 If you'd like to remove some of these options from showing, you can add the option to the shortcode with the value of *no*, like this:
 
