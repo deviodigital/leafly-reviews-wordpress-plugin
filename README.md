@@ -14,7 +14,7 @@ You can download it through your dashboard, or by going to the [Leafly Reviews p
 
 ### Adding your APP ID and KEY
 
-Once you install this plugin, you'll notice a new options page in your WordPress dashboard under the Settings section, titled "Leafly Reviews".
+Once you install this plugin, you'll notice a new options page in your WordPress dashboard under the Settings section, titled "Leafly Connect".
 
 On this page, you'll be able to add in your APP ID and KEY, which is needed for the plugin to work.
 
