@@ -4,7 +4,13 @@
 
 Easily display your dispensaries reviews on your WordPress powered website
 
-I wrote up a more detailed release post if you're interested in finding out a bit more information than what's included in this README.
+## PLEASE READ
+
+**Leafly is closing it's API, so as of 2.29.16, this plugin will no longer work.**
+
+I will be keeping an eye out if an API ever opens back up and I can update this plugin.
+
+As for the plugin itself, I wrote up a more detailed release post if you're interested in finding out a bit more information than what's included in this README.
 
 [View the write up here](http://robertdevore.com/leafly-reviews-wordpress-plugin/)
 
